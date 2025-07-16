@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace APICatalogo.Domain.Entities
+namespace CatalogAPI.Domain.Entities
 {
     [Table("Categories")]
     public class Category

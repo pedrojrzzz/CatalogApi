@@ -1,4 +1,4 @@
-﻿using APICatalogo.Domain.Entities;
+﻿using CatalogAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CatalogAPI.Infrastructure

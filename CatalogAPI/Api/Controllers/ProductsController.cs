@@ -73,7 +73,7 @@ namespace CatalogAPI.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public ActionResult<Product> Delete(int id)
         {
             var product = _dbContext.Products.FirstOrDefault(item => item.ProductId == id);
             if (product is null)

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CatalogAPI.Domain.Entities
 {
@@ -23,6 +24,8 @@ namespace CatalogAPI.Domain.Entities
         public float Stock { get; set; }
         public DateTime RegistrationDate { get; set; }
         public int CategoryId { get; set; } // Stores the category ID (foreign key)
+
+        [JsonIgnore]
         public Category? Category { get; set; }  // Navigation to the Category entity (object) - to access the category props
     }
 }

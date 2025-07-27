@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CatalogAPI.Domain.Entities
 {
@@ -15,6 +16,7 @@ namespace CatalogAPI.Domain.Entities
         [Required]
         [StringLength(80, ErrorMessage = "Only 80 characters are allowed")]
         public string? name { get; private set; }
+
         public ICollection<Product>? Products { get; private set; } // Collection of products that belong to a certain category
 
         public Category() // Construtor

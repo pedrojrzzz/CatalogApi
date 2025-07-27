@@ -25,7 +25,7 @@ namespace CatalogAPI.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Category>> Get()
         {
-            var categories = _dbContext.Categories.ToList(); // We are accessing the Categories properties
+            var categories = _dbContext.Categories.AsNoTracking().ToList(); // We are accessing the Category properties and disabling caching
             if (categories is null)
             {
                 return NotFound("Products not found");
@@ -39,7 +39,7 @@ namespace CatalogAPI.Api.Controllers
         [HttpGet("products")] // Define a product route so it doesn't conflict with the first GET route
         public ActionResult<IEnumerable<Category>> GetCategoryProducts()
         {
-            return _dbContext.Categories.Include(item => item.Products).ToList();
+            return _dbContext.Categories.AsNoTracking().Include(item => item.Products).ToList();
         }
 
 
@@ -47,7 +47,7 @@ namespace CatalogAPI.Api.Controllers
         [HttpGet("{id:int}", Name = "GetCategory")] // Receiving a parameter via url
         public ActionResult<Category> Get(int id)
         {
-            var category = _dbContext.Categories.FirstOrDefault(item => item.CategoryId == id);
+            var category = _dbContext.Categories.AsNoTracking().FirstOrDefault(item => item.CategoryId == id);
             if (category is null)
             {
                 return NotFound("Product not found");
